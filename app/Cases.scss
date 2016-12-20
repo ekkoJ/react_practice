@@ -1,0 +1,30 @@
+//case1
+.container1{
+    font-size: 0;
+    li{
+        display: inline-block;
+        list-style: none;
+        font-size: 18px;
+        padding: 18px 30px;
+        background-color: #389dc1;
+        cursor: pointer;
+        color: #fff;
+        font-weight: bold;
+        transition: background-color 0.5s ease;
+        &.active{
+            background-color: #e35885;
+        }
+    }
+    h1{
+        font-size: 20px;
+
+    }
+}
+.container2{
+    margin-top: 100px;
+
+    .text{
+        cursor: pointer;
+        display: inline-block;
+    }
+}
