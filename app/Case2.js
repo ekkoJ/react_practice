@@ -8,13 +8,19 @@ class Case2 extends React.Component {
         super();
         this.state = {
             text: 'Edit me',
+            display: true,
         };
     }
     handleChange(e) {
-        this.setState = {
-            text: this.props.value,
-        };
+        this.setState({
+            text: e.target.value,
+        });
         // console.log(e.target.value);
+    }
+    textfun() {
+        this.setState({
+            display: !this.state.display,
+        });
     }
     render() {
         return (
@@ -22,11 +28,12 @@ class Case2 extends React.Component {
                 <h1>Case2</h1>
                 <div className="container2">
                     <input type="text"
+                        className={this.state.display ? '' : 'disnone'}
                         value={`${this.state.text}`}
-                        onChange={() => this.handleChange()}
+                        onChange={e => this.handleChange(e)}
                     >
                     </input>
-                    <div className="text">{this.state.text}</div>
+                    <div className="text" onClick={() => this.textfun()}>{this.state.text}</div>
                 </div>
             </div>
         );

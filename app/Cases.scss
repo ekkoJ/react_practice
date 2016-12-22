@@ -21,10 +21,35 @@
     }
 }
 .container2{
-    margin-top: 100px;
-
     .text{
         cursor: pointer;
         display: inline-block;
+    }
+    input{
+
+    }
+}
+.container3{
+    li{
+        padding: 20px 30px;
+        background-color: #e35885;
+        margin-bottom: 8px;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+        cursor: pointer;
+        list-style: none;
+        color: #fff;
+        span{
+            float: right;
+        }
+        &.active{
+            background-color: #8ec16d;
+        }
+    }
+}
+.container4{
+    li{
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+        overflow: hidden;
     }
 }
