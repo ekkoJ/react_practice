@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 // import config from './config.json';
-import './Cases.scss';
+import '../styles/Cases.scss';
 
 class Case2 extends React.Component {
     constructor() {

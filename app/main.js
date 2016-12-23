@@ -1,10 +1,10 @@
 import React from 'react';
 import {render} from 'react-dom';
-import Greeter from './Greeter';
-import Case1 from './Case1';
-import Case2 from './Case2';
-import Case3 from './Case3';
-import Case4 from './Case4';
+import Greeter from '../app/scripts/Greeter';
+import Case1 from '../app/scripts/Case1';
+import Case2 from '../app/scripts/Case2';
+import Case3 from '../app/scripts/Case3';
+import Case4 from '../app/scripts/Case4';
 import './main.scss';
 
 render(<Greeter />, document.getElementById('container'));

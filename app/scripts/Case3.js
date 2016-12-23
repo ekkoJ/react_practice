@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import './Cases.scss';
+import '../styles/Cases.scss';
 
 
 class Case3 extends React.Component {

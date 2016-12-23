@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 // import config from './config.json';
-import './Cases.scss';
+import '../styles/Cases.scss';
 
 
 class Case4 extends React.Component {
@@ -17,7 +17,9 @@ class Case4 extends React.Component {
             <div>
                 <h1>Case4</h1>
                 <input placeholder="Enter your search terms"></input>
-                <div className="container4"></div>
+                <div className="container4">
+                    
+                </div>
             </div>
         );
     }

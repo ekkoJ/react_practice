@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
-import config from './config.json';
-import styles from './Greeter.css';
+import config from '../config.json';
+import styles from '../styles/Greeter.css';
 
 function Square(props) {
     return (
