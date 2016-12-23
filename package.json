@@ -32,7 +32,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base build"
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --content-base --open"
   },
   "author": "",
   "license": "ISC"
