@@ -1,2 +1,3 @@
 # react_practice
-webpack-dev-server --progress --color
+
+npm run dev
