@@ -1,0 +1,27 @@
+.filter{
+    .choice{
+        li{
+            display: inline-block;
+            width: 30%;
+            margin-right: 2%;
+            margin-top: 1%;
+            border: 1px solid #000;
+            cursor: pointer;
+            &.active{
+                background: #000;
+                color: #fff;
+            }
+        }
+    }
+    .fcont{
+        width: 80%;
+        column-count:3;
+        column-gap:10%;
+        margin-top: 1%;
+        li{
+            img{
+                width: 100%;
+            }
+        }
+    }
+}

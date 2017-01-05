@@ -4,8 +4,8 @@ import '../styles/Cases.scss';
 
 
 class Case3 extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             Configs: [
                 {
@@ -44,9 +44,9 @@ class Case3 extends React.Component {
         });
 
         return (
-            <div>
+            <div className="container3">
                 <h1>Case3</h1>
-                <div className="container3">
+                <div>
                     {
                         this.state.Configs.map((item, index) =>
                             <li

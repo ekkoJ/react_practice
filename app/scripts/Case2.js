@@ -4,8 +4,8 @@ import {render} from 'react-dom';
 import '../styles/Cases.scss';
 
 class Case2 extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             text: 'Edit me',
             display: true,
@@ -24,9 +24,9 @@ class Case2 extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="container2">
                 <h1>Case2</h1>
-                <div className="container2">
+                <div>
                     <input type="text"
                         className={this.state.display ? '' : 'disnone'}
                         value={`${this.state.text}`}

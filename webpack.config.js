@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 
@@ -43,7 +44,13 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'app/index.tmpl.html'), // new 一个这个插件的实例，并传入相关的参数
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
+        new CopyWebpackPlugin([
+            {
+                from: './app/source',
+                to: './source',
+            },
+        ]),
     ],
 
     devServer: {

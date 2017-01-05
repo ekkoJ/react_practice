@@ -47,9 +47,9 @@ class Case1 extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container1">
                 <h1>Case1</h1>
-                <div className="container1">
+                <div>
                     <Case1li />
                 </div>
             </div>

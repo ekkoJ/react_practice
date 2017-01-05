@@ -1,3 +1,112 @@
 {
-  "greetText": "Ryu ga wa ga deki o kula e!"
+    "imgs": [
+        {
+            "images": "../source/filter/a1.jpg",
+            "type": "aaa"
+        },
+        {
+            "images": "../source/filter/a2.jpg",
+            "type": "aaa"
+        },
+        {
+            "images": "../source/filter/a3.jpg",
+            "type": "aaa"
+        },
+        {
+            "images": "../source/filter/a4.jpg",
+            "type": "aaa"
+        },
+        {
+            "images": "../source/filter/a5.jpg",
+            "type": "aaa"
+        },
+        {
+            "images": "../source/filter/a6.jpg",
+            "type": "aaa"
+        },
+        {
+            "images": "../source/filter/a7.jpg",
+            "type": "aaa"
+        },
+        {
+            "images": "../source/filter/b1.jpg",
+            "type": "bbb"
+        },
+        {
+            "images": "../source/filter/b2.jpg",
+            "type": "bbb"
+        },
+        {
+            "images": "../source/filter/b3.jpg",
+            "type": "bbb"
+        },
+        {
+            "images": "../source/filter/b4.jpg",
+            "type": "bbb"
+        },
+        {
+            "images": "../source/filter/b5.jpg",
+            "type": "bbb"
+        },
+        {
+            "images": "../source/filter/b6.jpg",
+            "type": "bbb"
+        },
+        {
+            "images": "../source/filter/b7.jpg",
+            "type": "bbb"
+        },
+        {
+            "images": "../source/filter/b8.jpg",
+            "type": "bbb"
+        },
+        {
+            "images": "../source/filter/b9.jpg",
+            "type": "bbb"
+        },
+        {
+            "images": "../source/filter/c1.jpg",
+            "type": "ccc"
+        },
+        {
+            "images": "../source/filter/c2.jpg",
+            "type": "ccc"
+        },
+        {
+            "images": "../source/filter/c3.jpg",
+            "type": "ccc"
+        },
+        {
+            "images": "../source/filter/c4.jpg",
+            "type": "ccc"
+        },
+        {
+            "images": "../source/filter/c5.jpg",
+            "type": "ccc"
+        },
+        {
+            "images": "../source/filter/c6.jpg",
+            "type": "ccc"
+        },
+        {
+            "images": "../source/filter/c7.jpg",
+            "type": "ccc"
+        },
+        {
+            "images": "../source/filter/c8.jpg",
+            "type": "ccc"
+        },
+        {
+            "images": "../source/filter/c9.jpg",
+            "type": "ccc"
+        },
+        {
+            "images": "../source/filter/c10.jpg",
+            "type": "ccc"
+        },
+        {
+            "images": "../source/filter/c11.jpg",
+            "type": "ccc"
+        }
+    ]
 }
