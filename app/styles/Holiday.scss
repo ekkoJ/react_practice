@@ -27,6 +27,47 @@
 
     }
 }
+.frame3{
+    li{
+        width: 90%;
+        margin: 2% auto;
+        .left{
+            display: inline-block;
+            vertical-align: middle;
+            width: 35%;
+            img{
+                display: block;
+                width: 100%;
+            }
+        }
+        .right{
+            display: inline-block;
+            vertical-align: middle;
+            width: 65%;
+            padding-left: 30px;
+            h1{
+                font-family: BrownStd-Bold;
+                letter-spacing: 2px;
+                color: #000;
+                font-size: 20px;
+            }
+            h2{
+                color: #000;
+                font-family: BrownStd-Regular;
+                font-size: 20px;
+                display: block;
+                margin-top: 20px;
+            }
+            h3{
+                color: #000;
+                font-family: BrownStd-Light;
+                font-size: 25px;
+                display: block;
+                margin-top: 20px;
+            }
+        }
+    }
+}
 .submit{
     color: #f00;
     font-size: 16px;

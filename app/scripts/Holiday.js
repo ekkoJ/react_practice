@@ -2,80 +2,11 @@ import React from 'react';
 import {render} from 'react-dom';
 import lodash from 'lodash';
 import update from 'immutability-helper';
+import Frame1 from './holiday_frames/frame1';
+import Frame2 from './holiday_frames/frame2';
+import Frame3 from './holiday_frames/frame3';
+import * as datas from './holiday_frames/holiday_configs';
 import '../styles/Holiday.scss';
-
-const jsonUrl = 'https://cdn.contentful.com/spaces/gju6m3ezaxar/entries?content_type=jsonFull&include=10&limit=200&access_token=e887c7cd3298dd5e14cce7cd22523670abea9de380aef548efcbcb4b3a612ee9';
-const peoType = [
-    {
-        person: 'MOM',
-        perType: 'MOM',
-    },
-    {
-        person: 'DAD',
-        perType: 'DAD',
-    },
-    {
-        person: 'S.O.',
-        perType: 'S.O.',
-    },
-    {
-        person: 'BFF',
-        perType: 'BFF',
-    },
-    {
-        person: 'WORK SPOUSE',
-        perType: 'WORK SPOUSE',
-    },
-    {
-        person: 'SUPRISE ME',
-        perType: '',
-    },
-];
-class Frame1 extends React.Component {
-
-    render() {
-        return (
-            <div className="frame1">
-                {
-                    peoType.map((item, index) =>
-                            <li key={`person_${index}`}
-                                onClick={() => {
-                                    this.props.onClick(index);
-                                }}
-                            >
-                                {peoType[index].person}
-                            </li>
-                    )
-                }
-            </div>
-        );
-    }
-}
-
-class Frame2 extends React.Component {
-
-    render() {
-        return (
-            <div className="frame2">
-                <p>What is your <span>{`${this.props.personValue}`}</span> like?</p>
-                <p>Choose 3 traits</p>
-                <ul>
-                    {
-                        this.props.trait.map((item, index) =>
-                            <li key={`trait_${index}`}
-                                className={item.selected ? 'active' : ''}
-                                onClick={() => this.props.onClick(index)}
-                            >
-                                {item.traType}
-                            </li>
-                        )
-                    }
-                </ul>
-
-            </div>
-        );
-    }
-}
 
 
 class Holiday extends React.Component {
@@ -83,7 +14,7 @@ class Holiday extends React.Component {
         super(props);
         this.state = {
             showIndex: 0,
-            Vindex: 0,
+            personIndex: 0,
             trait: [
                 {
                     traType: 'CHILL',
@@ -111,14 +42,31 @@ class Holiday extends React.Component {
                 },
             ],
             selectedArr: [],
+            handleData: [],
+            finalData: [],
         };
+        fetch(datas.jsonUrl)
+        .then(res => res.json())
+        .then(content =>
+            this.setState({
+                handleData: content.items[0].fields.jsonFull.feed.entry,
+            })
+        );
     }
     handleClick(index) {
-        const sIndex = this.state.showIndex + 1;
-        this.setState({
-            showIndex: sIndex,
-            Vindex: index,
-        });
+        if (index === 5) {
+            this.setState({
+                showIndex: 2,
+                personIndex: index,
+                finalData: this.state.handleData,
+            });
+        } else {
+            const sIndex = this.state.showIndex + 1;
+            this.setState({
+                showIndex: sIndex,
+                personIndex: index,
+            });
+        }
     }
     handleSelect(index) {
         if (this.state.selectedArr.length === 3 && !this.state.trait[index].selected) return;
@@ -129,52 +77,64 @@ class Holiday extends React.Component {
                 },
             },
         });
+        const newTrait = [];
+        newArray.forEach((item, index) => {
+            if (item.selected) {
+                newTrait.push(item.traType);
+            }
+        });
         this.setState({
             trait: newArray,
-            selectedArr: this.state.trait[index].selected ?
-            this.state.selectedArr.unshift(this.state.trait[index].traType) :
-            this.state.selectedArr.push(this.state.trait[index].traType),
+            selectedArr: newTrait,
         });
-        console.log(this.state.selectedArr);
     }
     handleSubmit() {
-
+        const hadleData = [];
+        this.state.handleData.forEach((item, index) => {
+            if (datas.peoType[this.state.personIndex].perType.toLowerCase()
+            === item.gsx$person.$t.toLowerCase()) {
+                if (this.state.selectedArr.includes(item.gsx$trait.$t.toUpperCase())) {
+                    hadleData.push(item);
+                }
+            }
+        });
+        this.setState({
+            finalData: hadleData,
+        });
+        this.handleClick(this.state.showIndex);
     }
-    frames (showIndex, index) {
-        switch (showIndex) {
+    frames (show, index) {
+        switch (show) {
             case 1:
                 return <div>
-                            <Frame2 personValue={peoType[index].perType}
+                            <Frame2 personValue={datas.peoType[index].perType}
                                     trait={this.state.trait}
                                     onClick={i => this.handleSelect(i)}
                             />
-                        <a className="submit" onClick={() => this.handleSubmit()}>submit</a>
+                            <a className="submit"
+                                onClick={() => {
+                                    if (this.state.selectedArr.length >= 3) {
+                                        this.handleSubmit();
+                                    }
+                                }}
+                            >
+                                submit
+                            </a>
                       </div>;
             case 2:
-                return <Frame3 />;
+                return <Frame3 finalData={this.state.finalData} />;
             default:
-                return <Frame1 onClick={i => this.handleClick(i)} />;
+                return <Frame1 onClick={i => {
+                    this.handleClick(i);
+                }}/>;
         }
     }
-
-    // fetchJson() {
-        // fetch(jsonUrl)
-        // .then(res => res.json())
-        // .then(content =>
-            // content.items[0].fields.jsonFull.feed.entry.map((item, index) =>
-                // <li key={`trit_${index}`}>
-                //     {item.gsx$trait}
-                // </li>
-
-            // )
-        // )
-    // }
 
     render(props) {
         return (
             <div>
                 {
-                    this.frames(this.state.showIndex, this.state.Vindex)
+                    this.frames(this.state.showIndex, this.state.personIndex)
                 }
             </div>
         );
