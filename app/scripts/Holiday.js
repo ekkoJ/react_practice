@@ -66,6 +66,9 @@ class Holiday extends React.Component {
                 showIndex: sIndex,
                 personIndex: index,
             });
+            if (this.state.selectedArr.length === 3 && sIndex === 1) {
+                this.handleSubmit2(index);
+            }
         }
     }
     handleSelect(index) {
@@ -89,19 +92,40 @@ class Holiday extends React.Component {
         });
     }
     handleSubmit() {
-        const hadleData = [];
+        const dataArr = [];
         this.state.handleData.forEach((item, index) => {
             if (datas.peoType[this.state.personIndex].perType.toLowerCase()
             === item.gsx$person.$t.toLowerCase()) {
                 if (this.state.selectedArr.includes(item.gsx$trait.$t.toUpperCase())) {
-                    hadleData.push(item);
+                    dataArr.push(item);
                 }
             }
         });
         this.setState({
-            finalData: hadleData,
+            finalData: dataArr,
         });
-        this.handleClick(this.state.showIndex);
+        this.handleClick(this.state.personIndex);
+    }
+    handleSubmit2(person_index) {
+        const dataArr = [];
+        this.state.handleData.forEach((item, index) => {
+            if (datas.peoType[person_index].perType.toLowerCase()
+            === item.gsx$person.$t.toLowerCase()) {
+                if (this.state.selectedArr.includes(item.gsx$trait.$t.toUpperCase())) {
+                    dataArr.push(item);
+                }
+            }
+        });
+        this.setState({
+            showIndex: 2,
+            personIndex: person_index,
+            finalData: person_index === 5 ? this.state.handleData : dataArr,
+        });
+    }
+    handleBack(index) {
+        this.setState({
+            showIndex: index,
+        });
     }
     frames (show, index) {
         switch (show) {
@@ -122,11 +146,15 @@ class Holiday extends React.Component {
                             </a>
                       </div>;
             case 2:
-                return <Frame3 finalData={this.state.finalData} />;
+                return <div>
+                    <Frame3 finalData={this.state.finalData} />
+                    <div className="selectWindow">
+                        <p onClick={() => this.handleBack(0)}>person</p>
+                        <p onClick={() => this.handleBack(1)}>trait</p>
+                    </div>
+                </div>;
             default:
-                return <Frame1 onClick={i => {
-                    this.handleClick(i);
-                }}/>;
+                return <Frame1 onClick={i => this.handleClick(i)}/>;
         }
     }
 
